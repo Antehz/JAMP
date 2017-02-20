@@ -22,18 +22,18 @@ public class RunnerMemotyLeaks {
 
 		long before = System.currentTimeMillis();
 		System.out.println("Start...");
-
 		while ((myLine = bufRead.readLine()) != null) {
 			String newString = new String();
-			for (int i = 0; i < myLine.length() ; i ++) {
-				String substring=myLine.substring(i, i+1);
-				if ( !" ".equals(substring)){
-					newString+=substring;
-				}else {
+			for (int i = 0; i < myLine.length(); i++) {
+				String substring = myLine.substring(i, i + 1);
+				if (!" ".equals(substring)) {
+					newString += substring;
+				} else {
 					list.add(newString);
-					newString=new String();
+					newString = new String();
 				}
 			}
+			myLine = null;
 		}
 
 		System.out.println("Finish.. List size = " + list.size());

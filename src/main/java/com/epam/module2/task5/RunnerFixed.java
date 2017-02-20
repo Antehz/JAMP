@@ -22,27 +22,22 @@ public class RunnerFixed {
 		FileReader input = new FileReader("data.txt");
 		BufferedReader bufRead = new BufferedReader(input);
 		char[] myLine = null;
-		List<String> list = new ArrayList<String>();
+		String line=null;
+		List<char[]> list = new ArrayList<char[]>();
 		long before = System.currentTimeMillis();
 		System.out.println("Start...");
-		while ((bufRead.readLine()) != null) {
-			
-			myLine = bufRead.readLine().toCharArray();
+		int count = 0;
+		while ((line=bufRead.readLine()) != null) {
+			count++;
+			myLine = line.toCharArray();
 			for (int i=0; i<myLine.length;i+=4){
 				char[] subArray = new char[3];
 				subArray[0]=myLine[i];
 				subArray[1]=myLine[i+1];
 				subArray[2]=myLine[i+2];
-				list.add(String.valueOf(subArray));
+				list.add(subArray);
 				subArray=null;
 			}
-			
-			/*String[] array = myLine.split(" ");
-			for (String string : array) {
-				list.add(string);
-			}
-			array=null;
-			myLine=null;*/
 		}
 		bufRead.close();
 		input.close();
