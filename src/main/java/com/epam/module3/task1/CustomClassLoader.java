@@ -8,11 +8,16 @@ import java.lang.reflect.Method;
 /**
  * Created by Anton_Hrychanok on 2017-02-26.
  */
-public class CustomClassLoader extends java.lang.ClassLoader{
+public class CustomClassLoader extends java.lang.ClassLoader {
 
     private String pathtobin;
 
-    public void invokeClassMethod(String classBinName, String methodName){
+    @Override
+    protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+        return super.loadClass(name, resolve);
+    }
+
+    public void invokeClassMethod(String classBinName, String methodName) {
         try {
             Class loadedMyClass = this.loadClass(classBinName);
             System.out.println("Loaded class name: " + loadedMyClass.getName());
@@ -28,6 +33,7 @@ public class CustomClassLoader extends java.lang.ClassLoader{
         }
     }
 
+
     @Override
     public Class<?> loadClass(String name) throws ClassNotFoundException {
         System.out.println(String.format("Class %s is loading ...", name));
@@ -39,6 +45,6 @@ public class CustomClassLoader extends java.lang.ClassLoader{
         System.out.println(String.format("Looking for class %c ..", name));
         Class foundClass = super.findClass(name);
         System.out.println(String.format("Class %c has been found!", foundClass.getName()));
-        return foundClass ;
+        return foundClass;
     }
 }
