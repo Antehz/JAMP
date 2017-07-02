@@ -16,7 +16,6 @@ public class Task1ExecutirService {
 
 	public static void main(String[] args) {
 		ExecutorService executorService3 = Executors.newFixedThreadPool(5);
-
 		executorService3.execute(() -> {
 			System.out.println("Thread started");
 			Long a = a(9999L);

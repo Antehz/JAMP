@@ -2,6 +2,7 @@ package com.epam.module17.task;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Task2FixedVolatile {
 
@@ -9,6 +10,7 @@ public class Task2FixedVolatile {
 
     public static void main(String[] args) throws InterruptedException {
         Task2FixedVolatile test3Class = new Task2FixedVolatile();
+
 
         Date date1 = new Date();
        Thread thread1 = new Thread(() -> {
